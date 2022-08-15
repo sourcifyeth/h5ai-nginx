@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     const getSourcifyChains = async () => {
       const chainsArray = await (
-        await fetch(`http://sourcify.dev/server/chains`)
+        await fetch(`https://sourcify.dev/server/chains`)
       ).json();
       return chainsArray;
     };
