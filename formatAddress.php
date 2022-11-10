@@ -46,7 +46,7 @@ $finalPath = rtrim($finalPath, "/");
 if (
     count(array_diff($pathParts, explode("/", $finalPath))) === 0
 ) {
-    // if they have no difference continue
+    // if they have no difference continue calling h5ai
     include('./index.php');
 } else {
     // otherwise redirect to the right address
