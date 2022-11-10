@@ -44,3 +44,9 @@ COPY options.json /h5ai/_h5ai/private/conf/options.json
 COPY types.json /h5ai/_h5ai/private/conf/types.json 
 
 CMD ["bash", "/root/entrypoint.sh"] 
+
+
+RUN apt install -y php-mbstring
+
+COPY formatAddress.php /h5ai/_h5ai/public/formatAddress.php
+COPY Kekkak.php /h5ai/_h5ai/public/Kekkak.php
