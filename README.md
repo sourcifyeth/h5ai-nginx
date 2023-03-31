@@ -6,8 +6,12 @@ Used as a Web UI and API for the Sourify contract repository.
 
 Since there are thousands of folders in a chain folder, displaying all of them takes too long. Hence the nginx config does not allow these routes and redirects to the form under `redirects/`. To build the form page
 
+Use npm v14
+
 ```
-cd repo-guide-form
+mkdir redirects
+cd select-contract-form
+npm install
 npm run build
 ```
 
