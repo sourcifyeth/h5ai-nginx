@@ -2,7 +2,7 @@
 
 Docker for h5ai project (https://github.com/lrsjng/h5ai)
 
-Used as a Web UI and API for the Sourify contract repository.
+Used as a Web UI and API for the Sourcify contract repository.
 
 Since there are thousands of folders in a chain folder, displaying all of them takes too long. Hence the nginx config does not allow these routes and redirects to the form under `redirects/`. To build the form page
 
