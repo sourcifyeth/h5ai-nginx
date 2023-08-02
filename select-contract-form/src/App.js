@@ -21,8 +21,11 @@ function App() {
 
   useEffect(() => {
     const getSourcifyChains = async () => {
+      const serverUrl = window.configs?.SERVER_URL?.length > 0
+          ? window.configs.SERVER_URL
+          : "https://sourcify.dev/server"
       const chainsArray = await (
-        await fetch(`https://sourcify.dev/server/chains`)
+        await fetch(`${serverUrl}/chains`)
       ).json();
       return chainsArray;
     };
