@@ -1,5 +1,5 @@
-FROM node:14-alpine
-RUN apk add --no-cache git
+FROM node:14.14-alpine
+RUN apk add --no-cache git python2 make g++
 RUN git clone https://github.com/sourcifyeth/h5ai.git
 RUN cd h5ai && npm install && npm run build 
 RUN mv $(ls -1 /h5ai/build/*.zip) /h5ai/build/h5ai.zip
@@ -7,7 +7,10 @@ RUN ls /h5ai/build/
 
 # Build the form page
 COPY select-contract-form/ /select-contract-form 
-RUN mkdir /redirects && cd select-contract-form && npm install && npm run build
+RUN mkdir /redirects
+WORKDIR /select-contract-form 
+RUN npm install
+RUN npm run build
 
 # Specific version to avoid apt version change
 FROM nginx:1.20.2
@@ -50,3 +53,6 @@ RUN apt install -y php-mbstring
 
 COPY formatAddress.php /h5ai/_h5ai/public/formatAddress.php
 COPY Kekkak.php /h5ai/_h5ai/public/Kekkak.php
+
+LABEL org.opencontainers.image.source https://github.com/ethereum/sourcify
+LABEL org.opencontainers.image.licenses MIT
