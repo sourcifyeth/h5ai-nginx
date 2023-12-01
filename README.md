@@ -1,4 +1,4 @@
-# h5ai Docker
+# h5ai-nginx Docker
 
 Docker for h5ai project (https://github.com/lrsjng/h5ai)
 
