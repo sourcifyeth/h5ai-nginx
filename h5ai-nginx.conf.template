@@ -16,6 +16,13 @@ server {
 		try_files $uri @redirect;
 	}
 
+	# When specifically asking for a file redirect the request to the /server/repository/ API
+	location ~ ^/contracts/(full_match|partial_match)/(\d+)/([^/]+)/([^/]+)\.(\w+)$ {
+			rewrite ^/contracts/(full_match|partial_match)/(\d+)/([^/]+)/([^/]+)\.(\w+)$ /server/repository/contracts/$1/$2/$3/$4.$5 break;
+			# Proxy the transformed request to the target server.
+			proxy_pass $SOURCIFY_SERVER;
+	}
+
 	location @redirect {
 		return 301 /select-contract/;
 	}
