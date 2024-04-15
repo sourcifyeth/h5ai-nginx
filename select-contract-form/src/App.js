@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useRef, useState } from "react";
 import { Alert, Button, Card, Form, Spinner } from "react-bootstrap";
 import "./App.scss";
+import { getAddress } from "@ethersproject/address";
 
 function App() {
   const [selectedMatch, setSelectedMatch] = useState("full_match");
@@ -48,7 +49,8 @@ function App() {
       return;
     }
 
-    const uri = generateRepoURI(address, chainId, selectedMatch);
+    const checksummedAddress = getAddress(address.toLowerCase());
+    const uri = generateRepoURI(checksummedAddress, chainId, selectedMatch);
     // Look ahead if contract exists.
     setIsLoading(true);
     fetch(uri, { redirect: "follow" })
