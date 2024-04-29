@@ -18,7 +18,7 @@ server {
 
 	# When specifically asking for a $uri that ends with `.something` redirect the request to the /server/repository/ API
 	location ~ ^/contracts/(.*\.\w+)$ {
-		rewrite ^/contracts/(.*\.\w+)$ /server/repository/contracts/$1 break;
+		rewrite ^/contracts/(.*\.\w+)$ /repository/contracts/$1 break;
 		proxy_pass $SOURCIFY_SERVER;
 	}
 
