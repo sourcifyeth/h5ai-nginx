@@ -26,7 +26,7 @@ docker build -t h5ai-nginx .
 Run with
 
 ```
-docker run -d -p 10000:80 -v <local-path-to-repository>:/data h5ai-nginx
+docker run -d -e SOURCIFY_SERVER='<server-url>' -p 10000:80 -v <local-path-to-repository>:/data h5ai-nginx
 ```
 
 to access the repo at `http://localhost:10000`.

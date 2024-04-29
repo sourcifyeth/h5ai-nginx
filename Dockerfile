@@ -32,11 +32,6 @@ RUN apt update && \
 # Fix data location
 COPY class-setup.php /h5ai/_h5ai/private/php/core/class-setup.php
 
-# Create nginx configuration
-COPY h5ai-nginx.conf /etc/nginx/conf.d/h5ai-nginx.conf
-
-COPY nginx.conf /etc/nginx/nginx.conf
-
 # Copy entrypoint
 COPY entrypoint.sh /root/entrypoint.sh
 RUN chmod +x /root/entrypoint.sh
@@ -46,13 +41,17 @@ RUN apt install curl -y
 COPY options.json /h5ai/_h5ai/private/conf/options.json
 COPY types.json /h5ai/_h5ai/private/conf/types.json 
 
-CMD ["bash", "/root/entrypoint.sh"] 
-
-
 RUN apt install -y php-mbstring
 
 COPY formatAddress.php /h5ai/_h5ai/public/formatAddress.php
 COPY Kekkak.php /h5ai/_h5ai/public/Kekkak.php
+
+# Create nginx configuration
+COPY h5ai-nginx.conf.template /etc/nginx/conf.d/h5ai-nginx.conf.template
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+CMD ["bash", "/root/entrypoint.sh"] 
 
 LABEL org.opencontainers.image.source https://github.com/ethereum/sourcify
 LABEL org.opencontainers.image.licenses MIT
