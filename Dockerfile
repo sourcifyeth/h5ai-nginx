@@ -1,6 +1,11 @@
 FROM node:14.14-alpine
 RUN apk add --no-cache git python2 make g++
 RUN git clone https://github.com/sourcifyeth/h5ai.git
+
+ARG HIDE_OPEN_IN_REMIX
+COPY hide-open-in-remix.patch /hide-open-in-remix.patch 
+RUN if [ "$HIDE_OPEN_IN_REMIX" = "1" ]; then cd h5ai && git apply --verbose /hide-open-in-remix.patch; fi
+
 RUN cd h5ai && npm install && npm run build 
 RUN mv $(ls -1 /h5ai/build/*.zip) /h5ai/build/h5ai.zip
 RUN ls /h5ai/build/
