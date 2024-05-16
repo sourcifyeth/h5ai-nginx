@@ -1,0 +1,32 @@
+Subject: [PATCH] suppress link to remix
+---
+Index: src/_h5ai/public/js/lib/view/view.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/_h5ai/public/js/lib/view/view.js b/src/_h5ai/public/js/lib/view/view.js
+--- a/src/_h5ai/public/js/lib/view/view.js	(revision 15173ca22fcd4e9b2c0d11bdacc509428dba1bcd)
++++ b/src/_h5ai/public/js/lib/view/view.js	(date 1699289694771)
+@@ -32,9 +32,6 @@
+                 </li>
+             </ul>
+             <div id="view-hint"></div>
+-            <div style="margin-top: 2rem; text-decoration: underline;">
+-                <a id="open_in_remix" href="#" target="_blank" rel="noopener noreferrer">Open repo in Remix</a>
+-            </div>
+         </div>`;
+ const itemTpl =
+         `<li class="item">
+@@ -49,11 +46,9 @@
+ const $view = dom(viewTpl);
+ const $items = $view.find('#items');
+ const $hint = $view.find('#view-hint');
+-const $remix_link = $view.find('#open_in_remix');
+ const $path = global.window.location.href.split('/');
+ const $address = $path[6];
+ const $chainId = $path[5];
+-$remix_link.attr('href', `https://remix.ethereum.org/?#activate=sourcify&call=sourcify//fetchAndSave//${$address}//${$chainId}`);
+
+
+ const cropSize = (size, min, max) => Math.min(max, Math.max(min, size));
