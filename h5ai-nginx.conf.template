@@ -20,6 +20,7 @@ server {
 	location ~ ^/contracts/(.*\.\w+)$ {
 		rewrite ^/contracts/(.*\.\w+)$ /repository/contracts/$1 break;
 		proxy_pass $SOURCIFY_SERVER;
+		proxy_hide_header Access-Control-Allow-Origin;
 	}
 
 	location @redirect {
