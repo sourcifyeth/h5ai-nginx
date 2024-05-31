@@ -31,7 +31,10 @@ function App() {
       return chainsArray;
     };
     getSourcifyChains()
-      .then((chains) => setChains(chains))
+      .then((chains) => {
+        setChains(chains);
+        setChainId(chains[0].chainId);
+      })
       .catch((err) => alert(err));
   }, []);
 
