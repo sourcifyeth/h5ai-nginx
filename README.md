@@ -29,6 +29,8 @@ Run with
 docker run -d -e SOURCIFY_SERVER='<server-url>' -p 10000:80 -v <local-path-to-repository>:/data h5ai-nginx
 ```
 
+Note that `<server-url>` must be the URL of your Sourcify server such as `http://sourcify.dev`. However the current setup assumes your server is mounted at `/server` path of your domain e.g. in our case http://sourcify.dev/server/. If your server is not mounted at `/server` this won't work.
+
 to access the repo at `http://localhost:10000`.
 
 ## Troubleshooting
