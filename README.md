@@ -26,10 +26,10 @@ docker build -t h5ai-nginx .
 Run with
 
 ```
-docker run -d -e SOURCIFY_SERVER='<server-url>' -p 10000:80 -v <local-path-to-repository>:/data h5ai-nginx
+docker run -d -e SOURCIFY_SERVER='<server-url>' SERVER_PATH_PREFIX='<path-prefix>' -p 10000:80 -v <local-path-to-repository>:/data h5ai-nginx
 ```
 
-Note that `<server-url>` must be the URL of your Sourcify server such as `http://sourcify.dev`. However the current setup assumes your server is mounted at `/server` path of your domain e.g. in our case http://sourcify.dev/server/. If your server is not mounted at `/server` this won't work.
+Note that `<server-url>` must be the URL of your Sourcify server without the path prefix. So it can be `http://sourcify.dev` but not `http://sourcify.dev/server`. If you want to add a path prefix, set the env variable `SERVER_PATH_PREFIX`.
 
 to access the repo at `http://localhost:10000`.
 

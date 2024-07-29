@@ -9,7 +9,8 @@
 # Patch index.html to insert config parameter in the global window object
 sed -i "s@<script></script>@<script>window.configs={SERVER_URL:\"${SERVER_URL}\"}</script>@" /redirects/index.html
 
-envsubst '$SOURCIFY_SERVER' < /etc/nginx/conf.d/h5ai-nginx.conf.template > /etc/nginx/conf.d/h5ai-nginx.conf
+# Patch h5ai-nginx.conf
+envsubst '$SOURCIFY_SERVER,$SERVER_PATH_PREFIX' < /etc/nginx/conf.d/h5ai-nginx.conf.template > /etc/nginx/conf.d/h5ai-nginx.conf
 
 # Start nginx
 nginx -g "daemon off;"
