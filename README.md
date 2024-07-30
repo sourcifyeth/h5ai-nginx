@@ -31,6 +31,11 @@ docker run -d -e SOURCIFY_SERVER='<server-url>' SERVER_PATH_PREFIX='<path-prefix
 
 Note that `<server-url>` must be the URL of your Sourcify server without the path prefix. So it can be `http://sourcify.dev` but not `http://sourcify.dev/server`. If you want to add a path prefix, set the env variable `SERVER_PATH_PREFIX`.
 
+```bash
+SOURCIFY_SERVER=http://sourcify.dev
+SERVER_PATH_PREFIX=/server
+```
+
 to access the repo at `http://localhost:10000`.
 
 ## Troubleshooting
