@@ -3,7 +3,7 @@ server {
 	server_name repository;
 
 	root /data/;
-	add_header 'Access-Control-Allow-Origin' '*';
+	add_header 'Access-Control-Allow-Origin' '*' always;
 
 	absolute_redirect off; # e.g. Keep port 10000 on redirect in localhost:10000 not default 80
 
@@ -102,7 +102,7 @@ server {
 	location ~ "contracts\/(full_match|partial_match)\/\d+\/0x([A-Fa-f0-9]{40})"  {
 		index /_h5ai/public/formatAddress.php;
 		if ($request_method = 'OPTIONS') {
-						add_header 'Access-Control-Allow-Origin' '*';
+						add_header 'Access-Control-Allow-Origin' '*' always;
 						add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
 						#
 						# Custom headers and headers various browsers *should* be OK with but aren't
@@ -117,13 +117,13 @@ server {
 						return 204;
 					}
 					if ($request_method = 'POST') {
-						add_header 'Access-Control-Allow-Origin' '*';
+						add_header 'Access-Control-Allow-Origin' '*' always;
 						add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
 						add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
 						add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
 					}
 					if ($request_method = 'GET') {
-						add_header 'Access-Control-Allow-Origin' '*';
+						add_header 'Access-Control-Allow-Origin' '*' always;
 						add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
 						add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
 						add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
